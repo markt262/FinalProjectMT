@@ -20,7 +20,7 @@ public class database {
             stmt.executeUpdate(query);
 
 
-            // Close the connection version6
+            // Close the connection version7
             conn.close();
         } catch (Exception e) {
             System.err.println("Got an exception!");
