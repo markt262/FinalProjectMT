@@ -2,6 +2,10 @@ package org.example;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello version 2 world!");
+        database test = new database();
+        test.addUser();
+
     }
+
+
 }
