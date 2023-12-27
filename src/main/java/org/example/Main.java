@@ -7,8 +7,8 @@ public class Main {
         database test = new database();
         //test.addUser();
 
-        myform initialForm = new myform();
-        initialForm.myform();
+        myform welcomeForm = new myform();
+        welcomeForm.buttons();
         
 
 

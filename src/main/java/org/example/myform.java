@@ -5,20 +5,21 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class myform extends JFrame{
-    private JButton testButton;
+    private JButton Login;
     private JPanel panel1;
+    private JButton Register;
 
     public myform(){
         setContentPane(panel1);
-        setTitle("welcome");
-        setSize(450,300);
+        setTitle("Welcome to Scen-Nario Banking system.");
+        setSize(400,300);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
 
     }
 
-    public void myform() {
-        testButton.addActionListener(new ActionListener() {
+    public void buttons() {
+        Login.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("hello");
