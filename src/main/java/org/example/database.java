@@ -25,10 +25,10 @@ public class database {
             PreparedStatement preparedStmt = conn.prepareStatement(query1);
 
             preparedStmt.setString(1, a);
-            preparedStmt.setString(2, "Davis");
-            preparedStmt.setString(3, "1980-01-01");
-            preparedStmt.setString(4, "mm");
-            preparedStmt.setString(5, "mm");
+            preparedStmt.setString(2, b);
+            preparedStmt.setString(3, c);
+            preparedStmt.setString(4, d);
+            preparedStmt.setString(5, e);
 
             // execute the preparedstatement
             preparedStmt.execute();
