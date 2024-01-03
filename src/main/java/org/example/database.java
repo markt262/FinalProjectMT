@@ -1,11 +1,10 @@
 package org.example;
 import java.sql.*;
-import com.mysql.jdbc.Driver;
 
 
 public class database {
 
-    public void addUser(){
+    public void addUser( String a,String b, String c, String d, String e){
         Statement stmt = null;
         try {
             // Connect to the database
@@ -16,15 +15,31 @@ public class database {
 
             // Insert data into the database
             stmt = (Statement) conn.createStatement();
-            String query = "INSERT INTO user (1stname, 2ndname, password, dob) VALUES ('Mark','Thompson','apple','1972-01-01')";
-            stmt.executeUpdate(query);
+           // String query = "INSERT INTO user (firstname, lastname, dob, username,password) VALUES ( '(a)','x','1980-01-01','x','x')";
+           // stmt.executeUpdate(query);
+
+            // the mysql insert statement
+            String query1 = " insert into user (firstname, lastname, dob, username, password)"
+                    + " values (?, ?, ?, ?, ?)";
+            // create the mysql insert preparedstatement
+            PreparedStatement preparedStmt = conn.prepareStatement(query1);
+
+            preparedStmt.setString(1, a);
+            preparedStmt.setString(2, "Davis");
+            preparedStmt.setString(3, "1980-01-01");
+            preparedStmt.setString(4, "mm");
+            preparedStmt.setString(5, "mm");
+
+            // execute the preparedstatement
+            preparedStmt.execute();
+
 
 
             // Close the connection version7
             conn.close();
-        } catch (Exception e) {
+        } catch (Exception f) {
             System.err.println("Got an exception!");
-            System.err.println(e.getMessage());
+            System.err.println(f.getMessage());
         }
 
 

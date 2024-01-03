@@ -16,14 +16,22 @@ public class myform extends JFrame{
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
 
+        Register.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Register RegisterForm = new Register();
+
+            }
+        });
     }
 
-    public void buttons() {
+    public void login() {
         Login.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("hello");
             }
         });
+
     }
 }
