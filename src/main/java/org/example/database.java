@@ -6,7 +6,7 @@ import java.sql.*;
 public class database {
 
     public void addUser( String a,String b, String c, String d, String e){
-        Statement stmt = null;
+
         try {
             // Connect to the database
             String url = "jdbc:mysql://localhost:3306/projectdatabase";
@@ -14,10 +14,6 @@ public class database {
             String password = "LT0k41JCeam5";
             Connection conn = DriverManager.getConnection(url, user, password);
 
-            // Insert data into the database
-            stmt = (Statement) conn.createStatement();
-           // String query = "INSERT INTO user (firstname, lastname, dob, username,password) VALUES ( '(a)','x','1980-01-01','x','x')";
-           // stmt.executeUpdate(query);
 
             // the mysql insert statement
             String query1 = " insert into user (firstname, lastname, dob, username, password)"
@@ -34,8 +30,6 @@ public class database {
             // execute the preparedstatement
             preparedStmt.execute();
 
-
-
             // Close the connection version7
             conn.close();
         } catch (Exception f) {
@@ -43,10 +37,10 @@ public class database {
             System.err.println(f.getMessage());
         }
 
-
-
-
     }
+
+
+
 
 
 
