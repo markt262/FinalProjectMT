@@ -39,6 +39,8 @@ public class Register extends JFrame {
                 String userName = tfUserName.getText();
                 String password = tfPassword.getText();
 
+
+
                 database BankDatabase = new database();
                 BankDatabase.addUser(firstName,lastName,dob,userName,password);
                 setVisible(false);

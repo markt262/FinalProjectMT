@@ -39,7 +39,14 @@ public class IntialScreen  extends JFrame{
         Login.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("hello");
+                String u = tfUserName.getText();
+                String p = tfPassword.getText();
+
+                database test = new database();
+                test.verifyUser(u,p);
+
+
+
             }
 
 
