@@ -8,6 +8,9 @@ public class IntialScreen  extends JFrame{
     private JButton Login;
     private JPanel panel1;
     private JButton Register;
+    private JButton clear;
+    private JTextField tfUserName;
+    private JTextField tfPassword;
 
     public IntialScreen(){
         setContentPane(panel1);
@@ -23,6 +26,13 @@ public class IntialScreen  extends JFrame{
 
             }
         });
+        clear.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tfUserName.setText("");
+                tfPassword.setText("");
+            }
+        });
     }
 
     public void login() {
@@ -31,6 +41,10 @@ public class IntialScreen  extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 System.out.println("hello");
             }
+
+
+
+
         });
 
     }
