@@ -7,7 +7,7 @@ public class Main {
       //  database test = new database();
        // test.addUser();
 
-       myform welcomeForm = new myform();
+       IntialScreen welcomeForm = new IntialScreen();
         welcomeForm.login();
         
 

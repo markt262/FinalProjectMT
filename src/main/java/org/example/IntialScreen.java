@@ -4,12 +4,12 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class myform extends JFrame{
+public class IntialScreen  extends JFrame{
     private JButton Login;
     private JPanel panel1;
     private JButton Register;
 
-    public myform(){
+    public IntialScreen(){
         setContentPane(panel1);
         setTitle("Welcome to Scen-Nario Banking system.");
         setSize(400,300);

@@ -41,12 +41,24 @@ public class Register extends JFrame {
 
                 database test = new database();
                 test.addUser(firstName,lastName,dob,userName,password);
+                setVisible(false);
 
-                System.out.println(tfFirstName.getText());
+
 
             }
         });
 
 
+        Clear.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tfFirstName.setText("");
+                tfSecondName.setText("");
+                tfDOB.setText("");
+                tfUserName.setText("");
+                tfPassword.setText("");
+
+            }
+        });
     }
 }
