@@ -55,7 +55,7 @@ public class database {
             Statement statement = conn.createStatement();
 
             //execute the query
-            ResultSet resultSet = statement.executeQuery("SELECT usernumber FROM user WHERE username LIKE 'arky' AND password LIKE 'fhfhfh'");
+            ResultSet resultSet = statement.executeQuery("SELECT usernumber FROM user WHERE username LIKE 'marky' AND password LIKE 'fhfhfh'");
 
             // retrieve the data from the ResultSet
             String result ="";
@@ -73,6 +73,9 @@ public class database {
                 System.out.println("no match");
             } else {
                 System.out.println("Your username and password match");
+                MenuScreen welcomeUser = new MenuScreen();
+                welcomeUser.welcome(result);
+
             }
 
 
