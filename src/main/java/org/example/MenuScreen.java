@@ -33,8 +33,11 @@ public class MenuScreen extends JFrame {
 
                 // create a new business account in database
                database BankDatabase = new database();
+
                BankDatabase.addAccount(0,"business");
                BankDatabase.accountNumber();
+
+
 
 
                //link the user number and account number to the user account table.
@@ -60,6 +63,7 @@ public class MenuScreen extends JFrame {
     }
     public void transferAccountNumber(String result){
         y = result;
+
 
     }
 }

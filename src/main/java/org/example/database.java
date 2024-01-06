@@ -77,7 +77,7 @@ public class database {
                 System.out.println("Your username and password match");
                 MenuScreen welcomeUser = new MenuScreen();
                 welcomeUser.welcome(transferUserNo);
-                welcomeUser.transferUserNumber(transferUserNo);
+              welcomeUser.transferUserNumber(transferUserNo);
 
             }
 
@@ -134,7 +134,7 @@ public class database {
 
 
             // the mysql insert statement
-            String query5 = " insert into useraccount (usernumber, useraccount)"
+            String query5 = " insert into useraccount (usernumber, accountnumber)"
                     + " values (?, ?)";
 
 
@@ -180,13 +180,15 @@ public class database {
            if (resultSet.next()){
             accountnumbertransfer = resultSet.getString("accountNumber");
            }
+           MenuScreen welcomeUser = new MenuScreen();
+            welcomeUser.transferAccountNumber(accountnumbertransfer);
+
             //  Close the Resultset, statement, and Connection objects
             resultSet.close();
             statement.close();
             conn.close();
 
-            MenuScreen welcomeUser = new MenuScreen();
-            welcomeUser.transferAccountNumber(accountnumbertransfer);
+
 
 
         }
