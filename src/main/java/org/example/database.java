@@ -45,6 +45,9 @@ public class database {
     }
 
     public void verifyUser(String u, String p) {
+
+        String Q = ("SELECT usernumber FROM user WHERE username LIKE '"+u+"' AND password LIKE '"+p+"'");
+        System.out.println(Q);
         try {
             // Connect to the database
             String url = "jdbc:mysql://localhost:3306/projectdatabase";
@@ -53,11 +56,14 @@ public class database {
             Connection conn = DriverManager.getConnection(url, user, password);
 
 
+
+
+
             //create a statement object
             Statement statement = conn.createStatement();
 
             //execute the query
-            ResultSet resultSet = statement.executeQuery("SELECT usernumber FROM user WHERE username LIKE 'marky' AND password LIKE 'passmark'");
+            ResultSet resultSet = statement.executeQuery(Q);//"SELECT usernumber FROM user WHERE username LIKE 'davey' AND password LIKE 'passdave'");
 
             // retrieve the data from the ResultSet
             String transferUserNo = "";
