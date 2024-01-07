@@ -10,13 +10,19 @@ public class MenuScreen extends JFrame {
     static String x;
     static String y;
 
+    static String userIDretainer;
+
 
 
     private JPanel panel3;
     private JLabel lbWelcomeUserName;
-    private JButton btCreate;
-    private JButton button2;
-    private JButton button1;
+    private JButton btCreateBusiness;
+    private JButton byViewAccounts;
+    private JButton btjoinCommunity;
+    private JButton btjoinBusiness;
+    private JButton btCreateCommunity;
+
+    private JButton btCreateClient;
 
 
     public MenuScreen() {
@@ -29,7 +35,7 @@ public class MenuScreen extends JFrame {
         setVisible(true);
 
         //Create new business account and link the user number and account number to the user account table.
-        btCreate.addActionListener(new ActionListener() {
+        btCreateBusiness.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
            // Account userAccount = new Account(1000);
@@ -47,9 +53,59 @@ public class MenuScreen extends JFrame {
                //link the user number and account number to the user account table.
                BankDatabase.addUserAccount(x,y);
 
-                System.out.println(x);
 
 
+
+
+            }
+        });
+        btCreateClient.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Account userAccount = new Account(1000);
+                //userAccount.create(1000)
+                Account.ClientAccount CUser = new Account.ClientAccount(1500,"Client",0);
+                System.out.println(CUser.getOverdraft());
+
+                // create a new business account in database
+                database BankDatabase = new database();
+
+                BankDatabase.addAccount(0,"client");
+                //BankDatabase.accountNumber();
+
+
+                //link the user number and account number to the user account table.
+                BankDatabase.addUserAccount(x,y);
+
+            }
+        });
+        btCreateCommunity.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                // Account userAccount = new Account(1000);
+                //userAccount.create(1000)
+                Account.CommunityAccount ComUser = new Account.CommunityAccount(2500,"community",0);
+                System.out.println(ComUser.getOverdraft());
+
+                // create a new business account in database
+                database BankDatabase = new database();
+
+                BankDatabase.addAccount(0,"community");
+                //BankDatabase.accountNumber();
+
+
+                //link the user number and account number to the user account table.
+                BankDatabase.addUserAccount(x,y);
+
+            }
+        });
+        byViewAccounts.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                ViewMyAccounts viewMyAccountsScreen = new ViewMyAccounts();
+                System.out.println(userIDretainer);
 
 
             }
@@ -58,6 +114,8 @@ public class MenuScreen extends JFrame {
     public void welcome(String result){
         System.out.println(result);
         lbWelcomeUserName.setText(result);
+        userIDretainer= result;
+
 
     }
 
@@ -70,4 +128,6 @@ public class MenuScreen extends JFrame {
 
 
     }
+
+
 }

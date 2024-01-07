@@ -30,8 +30,30 @@ public class Account {
 
 
         }
+    public static class ClientAccount extends Account{
+        //Constructor with arguments
+        public ClientAccount(int overdraft,String accountType,int balance){
+            super(overdraft,accountType,balance);
+        }
+
 
     }
+    public static class CommunityAccount extends Account{
+        //Constructor with arguments
+        public CommunityAccount(int overdraft,String accountType,int balance){
+            super(overdraft,accountType,balance);
+        }
+
+
+    }
+
+
+
+    }
+
+
+
+
 
 
 

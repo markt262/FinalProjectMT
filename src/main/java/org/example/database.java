@@ -96,7 +96,7 @@ public class database {
     }
 
 
-    public void addAccount(int balance, String business) {
+    public void addAccount(int balance, String accountType) {
         try {
             // Connect to the database
             String url = "jdbc:mysql://localhost:3306/projectdatabase";
@@ -115,7 +115,7 @@ public class database {
 
 
             preparedStmt.setInt(1, balance);
-            preparedStmt.setString(2, business);
+            preparedStmt.setString(2, accountType);
 
 
             // execute the preparedstatement
