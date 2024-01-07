@@ -4,10 +4,14 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 public class MenuScreen extends JFrame {
 
-    String x;
-    String y;
+    static String x;
+    static String y;
+
+
+
     private JPanel panel3;
     private JLabel lbWelcomeUserName;
     private JButton btCreate;
@@ -16,6 +20,8 @@ public class MenuScreen extends JFrame {
 
 
     public MenuScreen() {
+
+
         setContentPane(panel3);
         setTitle("Welcome to Scen-Nario Banking system.");
         setSize(400, 300);
@@ -35,9 +41,7 @@ public class MenuScreen extends JFrame {
                database BankDatabase = new database();
 
                BankDatabase.addAccount(0,"business");
-               BankDatabase.accountNumber();
-
-
+               //BankDatabase.accountNumber();
 
 
                //link the user number and account number to the user account table.

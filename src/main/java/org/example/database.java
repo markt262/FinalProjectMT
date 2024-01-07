@@ -121,6 +121,41 @@ public class database {
             System.err.println("Got an exception!");
             System.err.println(f.getMessage());
         }
+        try {
+            // Connect to the database
+            String url = "jdbc:mysql://localhost:3306/projectdatabase";
+            String user = "root";
+            String password = "LT0k41JCeam5";
+            Connection conn = DriverManager.getConnection(url, user, password);
+
+
+            // create a statement object
+            Statement statement = conn.createStatement();
+
+            //execute the query
+            ResultSet resultSet = statement.executeQuery("SELECT accountNumber FROM account ORDER BY accountNumber DESC LIMIT 1;");
+
+            //retrieve the  data from the resultset
+            String accountnumbertransfer = "";
+            if (resultSet.next()){
+                accountnumbertransfer = resultSet.getString("accountNumber");
+            }
+            MenuScreen welcomeUser = new MenuScreen();
+            welcomeUser.transferAccountNumber(accountnumbertransfer);
+
+            //  Close the Resultset, statement, and Connection objects
+            resultSet.close();
+            statement.close();
+            conn.close();
+
+
+
+
+        }
+
+        catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
@@ -142,7 +177,7 @@ public class database {
             PreparedStatement preparedStmt = conn.prepareStatement(query5);
 
 
-            preparedStmt.setString(1, x);
+            preparedStmt.setString(1,x);
             preparedStmt.setString(2,y);
 
 
