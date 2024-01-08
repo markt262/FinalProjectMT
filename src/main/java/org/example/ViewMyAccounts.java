@@ -6,6 +6,10 @@ public class ViewMyAccounts extends JFrame {
 
     private JPanel panel4;
 
+    private JLabel lbaAll;
+    private JList list1;
+
+
     public ViewMyAccounts(){
         setContentPane(panel4);
         setTitle("All Accounts I own");
@@ -15,6 +19,14 @@ public class ViewMyAccounts extends JFrame {
 
 
 
-
     }
+    public void returnTable(JTable table) {
+        JScrollPane scrollPane = new JScrollPane(table);
+        JFrame frame = new JFrame();
+        frame.add(scrollPane);
+        frame.pack();
+        frame.setVisible(true);
+    }
+
+
 }

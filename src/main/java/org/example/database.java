@@ -1,8 +1,8 @@
 //test merge1
 package org.example;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.sql.*;
-
-
 
 
 public class database {
@@ -46,7 +46,7 @@ public class database {
 
     public void verifyUser(String u, String p) {
 
-        String Q = ("SELECT usernumber FROM user WHERE username LIKE '"+u+"' AND password LIKE '"+p+"'");
+        String Q = ("SELECT usernumber FROM user WHERE username LIKE '" + u + "' AND password LIKE '" + p + "'");
         System.out.println(Q);
         try {
             // Connect to the database
@@ -54,9 +54,6 @@ public class database {
             String user = "root";
             String password = "LT0k41JCeam5";
             Connection conn = DriverManager.getConnection(url, user, password);
-
-
-
 
 
             //create a statement object
@@ -83,7 +80,7 @@ public class database {
                 System.out.println("Your username and password match");
                 MenuScreen welcomeUser = new MenuScreen();
                 welcomeUser.welcome(transferUserNo);
-              welcomeUser.transferUserNumber(transferUserNo);
+                welcomeUser.transferUserNumber(transferUserNo);
 
             }
 
@@ -143,7 +140,7 @@ public class database {
 
             //retrieve the  data from the resultset
             String accountnumbertransfer = "";
-            if (resultSet.next()){
+            if (resultSet.next()) {
                 accountnumbertransfer = resultSet.getString("accountNumber");
             }
             MenuScreen welcomeUser = new MenuScreen();
@@ -155,11 +152,7 @@ public class database {
             conn.close();
 
 
-
-
-        }
-
-        catch (SQLException e) {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
@@ -183,8 +176,8 @@ public class database {
             PreparedStatement preparedStmt = conn.prepareStatement(query5);
 
 
-            preparedStmt.setString(1,x);
-            preparedStmt.setString(2,y);
+            preparedStmt.setString(1, x);
+            preparedStmt.setString(2, y);
 
 
             // execute the preparedstatement
@@ -196,7 +189,6 @@ public class database {
             System.err.println("Got an exception!");
             System.err.println(f.getMessage());
         }
-
 
 
     }
@@ -218,10 +210,10 @@ public class database {
 
             //retrieve the  data from the resultset
             String accountnumbertransfer = "";
-           if (resultSet.next()){
-            accountnumbertransfer = resultSet.getString("accountNumber");
-           }
-           MenuScreen welcomeUser = new MenuScreen();
+            if (resultSet.next()) {
+                accountnumbertransfer = resultSet.getString("accountNumber");
+            }
+            MenuScreen welcomeUser = new MenuScreen();
             welcomeUser.transferAccountNumber(accountnumbertransfer);
 
             //  Close the Resultset, statement, and Connection objects
@@ -230,11 +222,78 @@ public class database {
             conn.close();
 
 
-
-
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
+    }
 
-        catch (SQLException e) {
+    public void viewAllAccounts(int intUserNumber) {
+
+        //System.out.println(userIDretainer);
+
+        try {
+            // Connect to the database
+            String url = "jdbc:mysql://localhost:3306/projectdatabase";
+            String user = "root";
+            String password = "LT0k41JCeam5";
+            Connection conn = DriverManager.getConnection(url, user, password);
+
+            String query6 = "SELECT account.`accountnumber`, account.accountType,account.balance\n" +
+                    "FROM `user`\n" +
+                    "INNER JOIN (account\n" +
+                    "INNER JOIN useraccount ON account.`accountnumber` = useraccount.`accountnumber`)\n" +
+                    "ON `user`.`usernumber` = useraccount.`usernumber`\n" +
+                    "WHERE (((`user`.`usernumber`)="+intUserNumber+"));\n";
+
+
+
+
+
+            // create a statement object
+            Statement statement = conn.createStatement();
+
+            //execute the query
+            ResultSet resultSet = statement.executeQuery(query6);
+                    /*("SELECT account.`accountnumber`, account.accountType,account.balance\n" +
+                    "FROM `user`\n" +
+                    "INNER JOIN (account\n" +
+                    "INNER JOIN useraccount ON account.`accountnumber` = useraccount.`accountnumber`)\n" +
+                    "ON `user`.`usernumber` = useraccount.`usernumber`\n" +
+                    "WHERE (((`user`.`usernumber`)=1));\n"));*/
+
+            //create a table model
+            DefaultTableModel model = new DefaultTableModel();
+            JTable table = new JTable(model);
+
+            //add column names to the table model
+            ResultSetMetaData metaData = resultSet.getMetaData();
+            int columnCount = metaData.getColumnCount();
+            for (int i = 1; i <= columnCount; i++) {
+                model.addColumn(metaData.getColumnName(i));
+            }
+
+            //add rows to the table model
+            while (resultSet.next()) {
+                Object[] row = new Object[columnCount];
+                for (int i = 1; i <= columnCount; i++) {
+                    row[i - 1] = resultSet.getObject(i);
+
+                }
+                model.addRow(row);
+            }
+            // add table to a JScroolPane and display it
+
+            ViewMyAccounts allAccount = new ViewMyAccounts();
+            allAccount.returnTable(table);
+
+
+            //  Close the Resultset, statement, and Connection objects
+            resultSet.close();
+            statement.close();
+            conn.close();
+
+
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }

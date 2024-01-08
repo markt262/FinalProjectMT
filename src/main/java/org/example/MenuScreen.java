@@ -12,6 +12,9 @@ public class MenuScreen extends JFrame {
 
     static String userIDretainer;
 
+    static String b;
+
+    static int intUserNumber;
 
 
     private JPanel panel3;
@@ -38,23 +41,20 @@ public class MenuScreen extends JFrame {
         btCreateBusiness.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-           // Account userAccount = new Account(1000);
-            //userAccount.create(1000)
-                Account.BusinessAccount BUser = new Account.BusinessAccount(1000,"Business",0);
+                // Account userAccount = new Account(1000);
+                //userAccount.create(1000)
+                Account.BusinessAccount BUser = new Account.BusinessAccount(1000, "Business", 0);
                 System.out.println(BUser.getOverdraft());
 
                 // create a new business account in database
-               database BankDatabase = new database();
+                database BankDatabase = new database();
 
-               BankDatabase.addAccount(0,"business");
-               //BankDatabase.accountNumber();
-
-
-               //link the user number and account number to the user account table.
-               BankDatabase.addUserAccount(x,y);
+                BankDatabase.addAccount(0, "business");
+                //BankDatabase.accountNumber();
 
 
-
+                //link the user number and account number to the user account table.
+                BankDatabase.addUserAccount(x, y);
 
 
             }
@@ -64,18 +64,18 @@ public class MenuScreen extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 // Account userAccount = new Account(1000);
                 //userAccount.create(1000)
-                Account.ClientAccount CUser = new Account.ClientAccount(1500,"Client",0);
+                Account.ClientAccount CUser = new Account.ClientAccount(1500, "Client", 0);
                 System.out.println(CUser.getOverdraft());
 
                 // create a new business account in database
                 database BankDatabase = new database();
 
-                BankDatabase.addAccount(0,"client");
+                BankDatabase.addAccount(0, "client");
                 //BankDatabase.accountNumber();
 
 
                 //link the user number and account number to the user account table.
-                BankDatabase.addUserAccount(x,y);
+                BankDatabase.addUserAccount(x, y);
 
             }
         });
@@ -85,18 +85,18 @@ public class MenuScreen extends JFrame {
 
                 // Account userAccount = new Account(1000);
                 //userAccount.create(1000)
-                Account.CommunityAccount ComUser = new Account.CommunityAccount(2500,"community",0);
+                Account.CommunityAccount ComUser = new Account.CommunityAccount(2500, "community", 0);
                 System.out.println(ComUser.getOverdraft());
 
                 // create a new business account in database
                 database BankDatabase = new database();
 
-                BankDatabase.addAccount(0,"community");
+                BankDatabase.addAccount(0, "community");
                 //BankDatabase.accountNumber();
 
 
                 //link the user number and account number to the user account table.
-                BankDatabase.addUserAccount(x,y);
+                BankDatabase.addUserAccount(x, y);
 
             }
         });
@@ -106,15 +106,19 @@ public class MenuScreen extends JFrame {
 
                 ViewMyAccounts viewMyAccountsScreen = new ViewMyAccounts();
                 System.out.println(userIDretainer);
+                database BankDatabase = new database();
+                BankDatabase.viewAllAccounts(intUserNumber);
 
 
             }
         });
     }
-    public void welcome(String result){
+
+    public void welcome(String result) {
         System.out.println(result);
         lbWelcomeUserName.setText(result);
-        userIDretainer= result;
+        userIDretainer = result;
+        intUserNumber = Integer.parseInt(userIDretainer);
 
 
     }
@@ -123,11 +127,15 @@ public class MenuScreen extends JFrame {
 
         x = result;
     }
-    public void transferAccountNumber(String result){
+
+    public void transferAccountNumber(String result) {
         y = result;
-
-
     }
 
 
+
+
 }
+
+
+
