@@ -293,39 +293,12 @@ public class database {
             throw new RuntimeException(e);
         }
     }
-}
 
-
-
-
-        /*JComboBox<String> comboBox1 = new JComboBox<>();
-        try {
-            String url = "jdbc:mysql://localhost:3306/projectdatabase";
-            String user = "root";
-            String password = "LT0k41JCeam5";
-            Connection conn = DriverManager.getConnection(url, user, password);
-
-            PreparedStatement statement = conn.prepareStatement("SELECT account.`accountnumber`,account.accountType,account.balance\n" +
-                    "FROM `user`\n" +
-                    "INNER JOIN (account\n" +
-                    "INNER JOIN useraccount ON account.`accountnumber` = useraccount.`accountnumber`)\n" +
-                    "ON `user`.`usernumber` = useraccount.`usernumber`\n" +
-                    "WHERE (((`user`.`usernumber`)="+intUserNumber+"));\n");
-            ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()) {
-                comboBox1.addItem(resultSet.getString("accountnumber"));
-
-
-            }
-            conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        ViewMyAccounts allAccount = new ViewMyAccounts();
-        allAccount.returnAccountNumber(comboBox1);
-
+    public void returnAccountType(Object selectedItem){
+        System.out.println(selectedItem);
 
 
     }
-    }*/
+}
+
+

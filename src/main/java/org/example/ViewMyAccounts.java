@@ -26,6 +26,13 @@ public class ViewMyAccounts extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                AccountsMenu.welcome(comboBox5.getSelectedItem());
+                AccountsMenu newAccountMenu = new AccountsMenu();
+                database myDatabase = new database();
+                myDatabase.returnAccountType(comboBox5.getSelectedItem());
+
+
+
 
 
             }
