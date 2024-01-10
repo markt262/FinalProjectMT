@@ -7,6 +7,7 @@ import java.sql.*;
 
 public class database {
 
+
     public void addUser(String a, String b, String c, String d, String e) {
 
         try {
@@ -193,41 +194,9 @@ public class database {
 
     }
 
-    public void accountNumber() {
-        try {
-            // Connect to the database
-            String url = "jdbc:mysql://localhost:3306/projectdatabase";
-            String user = "root";
-            String password = "LT0k41JCeam5";
-            Connection conn = DriverManager.getConnection(url, user, password);
-
-
-            // create a statement object
-            Statement statement = conn.createStatement();
-
-            //execute the query
-            ResultSet resultSet = statement.executeQuery("SELECT accountNumber FROM account ORDER BY accountNumber DESC LIMIT 1;");
-
-            //retrieve the  data from the resultset
-            String accountnumbertransfer = "";
-            if (resultSet.next()) {
-                accountnumbertransfer = resultSet.getString("accountNumber");
-            }
-            MenuScreen welcomeUser = new MenuScreen();
-            welcomeUser.transferAccountNumber(accountnumbertransfer);
-
-            //  Close the Resultset, statement, and Connection objects
-            resultSet.close();
-            statement.close();
-            conn.close();
-
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     public void viewAllAccounts(int intUserNumber) {
+
 
         //System.out.println(userIDretainer);
 
@@ -243,10 +212,7 @@ public class database {
                     "INNER JOIN (account\n" +
                     "INNER JOIN useraccount ON account.`accountnumber` = useraccount.`accountnumber`)\n" +
                     "ON `user`.`usernumber` = useraccount.`usernumber`\n" +
-                    "WHERE (((`user`.`usernumber`)="+intUserNumber+"));\n";
-
-
-
+                    "WHERE (((`user`.`usernumber`)=" + intUserNumber + "));\n";
 
 
             // create a statement object
@@ -288,13 +254,78 @@ public class database {
 
 
             //  Close the Resultset, statement, and Connection objects
-            resultSet.close();
-            statement.close();
-            conn.close();
+            //  resultSet.close();
+            // statement.close();
+            // conn.close();
 
+           JComboBox<String> comboBox1 = new JComboBox<>();
+            try {
+                // String url = "jdbc:mysql://localhost:3306/projectdatabase";
+                // String user = "root";
+                // String password = "LT0k41JCeam5";
+                //  Connection conn = DriverManager.getConnection(url, user, password);
+                DefaultComboBoxModel myModel = new DefaultComboBoxModel();
+                PreparedStatement statement1 = conn.prepareStatement("SELECT account.`accountnumber`,account.accountType,account.balance\n" +
+                        "FROM `user`\n" +
+                        "INNER JOIN (account\n" +
+                        "INNER JOIN useraccount ON account.`accountnumber` = useraccount.`accountnumber`)\n" +
+                        "ON `user`.`usernumber` = useraccount.`usernumber`\n" +
+                        "WHERE (((`user`.`usernumber`)=" + intUserNumber + "));\n");
+                ResultSet resultSet1 = statement1.executeQuery();
+                while (resultSet1.next()) {
+                   // comboBox1.addItem(resultSet1.getString("accountnumber"));
+                    String column= resultSet1.getString("accountNumber");
+                    myModel.addElement(column);
+
+
+                }
+
+                //ViewMyAccounts allAccount = new ViewMyAccounts();
+                allAccount.returnAccountNumber(myModel);
+                
+
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 }
+
+
+
+
+        /*JComboBox<String> comboBox1 = new JComboBox<>();
+        try {
+            String url = "jdbc:mysql://localhost:3306/projectdatabase";
+            String user = "root";
+            String password = "LT0k41JCeam5";
+            Connection conn = DriverManager.getConnection(url, user, password);
+
+            PreparedStatement statement = conn.prepareStatement("SELECT account.`accountnumber`,account.accountType,account.balance\n" +
+                    "FROM `user`\n" +
+                    "INNER JOIN (account\n" +
+                    "INNER JOIN useraccount ON account.`accountnumber` = useraccount.`accountnumber`)\n" +
+                    "ON `user`.`usernumber` = useraccount.`usernumber`\n" +
+                    "WHERE (((`user`.`usernumber`)="+intUserNumber+"));\n");
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                comboBox1.addItem(resultSet.getString("accountnumber"));
+
+
+            }
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        ViewMyAccounts allAccount = new ViewMyAccounts();
+        allAccount.returnAccountNumber(comboBox1);
+
+
+
+    }
+    }*/
