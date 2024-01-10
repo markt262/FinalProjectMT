@@ -7,7 +7,11 @@ import java.awt.event.ActionListener;
 public class AccountsMenu extends JFrame {
 
 
-    static String x;
+    static String accNum;
+
+    static String acctype;
+
+    static String accB;
     private JPanel mainPanel;
     private  JLabel jLAccountNumberWelcome;
     private JLabel lbDeposit;
@@ -20,6 +24,8 @@ public class AccountsMenu extends JFrame {
     private JButton buttonDeposit;
     private JButton buttonWithdraw;
     private JButton buttonTransfer;
+    private JLabel jlAccountType;
+    private JLabel lbBalance;
 
     public AccountsMenu(){
         setContentPane(mainPanel);
@@ -28,7 +34,9 @@ public class AccountsMenu extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         //setVisible(true);
 
-        jLAccountNumberWelcome.setText(x);
+        jLAccountNumberWelcome.setText(accNum);
+        jlAccountType.setText(acctype);
+        lbBalance.setText(accB);
         setVisible(true);
 
 
@@ -56,7 +64,17 @@ public class AccountsMenu extends JFrame {
 
     public static void welcome(Object selectedItem) {
         System.out.println(selectedItem);
-        x= (String) selectedItem;
+        accNum= (String) selectedItem;
+    }
+
+    public static void accountType (String r){
+        System.out.println(r);
+        acctype = r;
+
+    }
+    public static void balance (String b){
+        accB=b;
+
     }
 
 

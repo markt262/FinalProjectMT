@@ -30,6 +30,7 @@ public class ViewMyAccounts extends JFrame {
                 AccountsMenu newAccountMenu = new AccountsMenu();
                 database myDatabase = new database();
                 myDatabase.returnAccountType(comboBox5.getSelectedItem());
+                myDatabase.balance(comboBox5.getSelectedItem());
 
 
 

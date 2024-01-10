@@ -258,7 +258,7 @@ public class database {
             // statement.close();
             // conn.close();
 
-           JComboBox<String> comboBox1 = new JComboBox<>();
+            JComboBox<String> comboBox1 = new JComboBox<>();
             try {
                 // String url = "jdbc:mysql://localhost:3306/projectdatabase";
                 // String user = "root";
@@ -273,8 +273,8 @@ public class database {
                         "WHERE (((`user`.`usernumber`)=" + intUserNumber + "));\n");
                 ResultSet resultSet1 = statement1.executeQuery();
                 while (resultSet1.next()) {
-                   // comboBox1.addItem(resultSet1.getString("accountnumber"));
-                    String column= resultSet1.getString("accountNumber");
+                    // comboBox1.addItem(resultSet1.getString("accountnumber"));
+                    String column = resultSet1.getString("accountNumber");
                     myModel.addElement(column);
 
 
@@ -282,7 +282,7 @@ public class database {
 
                 //ViewMyAccounts allAccount = new ViewMyAccounts();
                 allAccount.returnAccountNumber(myModel);
-                
+
 
                 conn.close();
             } catch (SQLException e) {
@@ -293,12 +293,70 @@ public class database {
             throw new RuntimeException(e);
         }
     }
-
-    public void returnAccountType(Object selectedItem){
+private int t;
+    public void returnAccountType(Object selectedItem) {
         System.out.println(selectedItem);
+        String t= "'%"+selectedItem+"%'";
+        try {
+            // Connect to the database
+            String url = "jdbc:mysql://localhost:3306/projectdatabase";
+            String user = "root";
+            String password = "LT0k41JCeam5";
+            Connection conn = DriverManager.getConnection(url, user, password);
 
 
+            String query7 = "SELECT accountType FROM account WHERE accountNumber LIKE "+t;
+            // create a statement object
+            Statement statement = conn.createStatement();
+
+            //execute the query
+            ResultSet resultSet = statement.executeQuery(query7);
+            while (resultSet.next()) {
+                String resultstring = resultSet.getString("accountType");
+                //System.out.println(resultstring);
+                AccountsMenu.accountType(resultstring);
+               AccountsMenu accountMenu = new AccountsMenu();
+            }
+
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
-}
+    private int h;
+    public void balance(Object selectedItem) {
+        System.out.println(selectedItem);
+        String h= "'%"+selectedItem+"%'";
+        try {
+            // Connect to the database
+            String url = "jdbc:mysql://localhost:3306/projectdatabase";
+            String user = "root";
+            String password = "LT0k41JCeam5";
+            Connection conn = DriverManager.getConnection(url, user, password);
+
+
+            String query8 = "SELECT balance FROM account WHERE accountNumber LIKE "+h;
+            // create a statement object
+            Statement statement = conn.createStatement();
+
+            //execute the query
+            ResultSet resultSet = statement.executeQuery(query8);
+            while (resultSet.next()) {
+                String resultstring = resultSet.getString("balance");
+                //System.out.println(resultstring);
+                AccountsMenu.balance(resultstring);
+                AccountsMenu accountMenu = new AccountsMenu();
+            }
+
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+}//end class
 
 
