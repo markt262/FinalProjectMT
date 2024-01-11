@@ -43,7 +43,7 @@ public class MenuScreen extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 // Account userAccount = new Account(1000);
                 //userAccount.create(1000)
-                Account.BusinessAccount BUser = new Account.BusinessAccount(1000, "Business", 0);
+                Account.BusinessAccount BUser = new Account.BusinessAccount( 1000,"Business", 0,0);
                 System.out.println(BUser.getOverdraft());
 
                 // create a new business account in database
@@ -64,7 +64,7 @@ public class MenuScreen extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 // Account userAccount = new Account(1000);
                 //userAccount.create(1000)
-                Account.ClientAccount CUser = new Account.ClientAccount(1500, "Client", 0);
+                Account.ClientAccount CUser = new Account.ClientAccount(1500, "Client", 0,0);
                 System.out.println(CUser.getOverdraft());
 
                 // create a new business account in database
@@ -85,7 +85,7 @@ public class MenuScreen extends JFrame {
 
                 // Account userAccount = new Account(1000);
                 //userAccount.create(1000)
-                Account.CommunityAccount ComUser = new Account.CommunityAccount(2500, "community", 0);
+                Account.CommunityAccount ComUser = new Account.CommunityAccount(2500, "community", 0,0);
                 System.out.println(ComUser.getOverdraft());
 
                 // create a new business account in database

@@ -6,11 +6,14 @@ public class Account {
     private  String accountType;
     private int balance;
 
+    private int accountNumber;
+
     //Constructor
-    public Account(int overdraft,String accountType, int balance){
+    public Account(int overdraft,String accountType, int balance,int accountumber){
         this.overdraft = overdraft;
         this.accountType= accountType;
         this.balance = balance;
+        this.accountNumber=accountumber;
 
     }
     //methods
@@ -25,24 +28,28 @@ public class Account {
 
     public static class BusinessAccount extends Account{
         //Constructor with arguments
-        public BusinessAccount(int overdraft,String accountType,int balance){
-            super(overdraft,accountType,balance);
+        int overdraft= 1033;
+        public BusinessAccount(int overdraft,String accountType,int balance, int accountNumber){
+
+
+            super(overdraft,accountType,balance,accountNumber);
         }
+
 
 
         }
     public static class ClientAccount extends Account{
         //Constructor with arguments
-        public ClientAccount(int overdraft,String accountType,int balance){
-            super(overdraft,accountType,balance);
+        public ClientAccount(int overdraft,String accountType,int balance,int accountNumber){
+            super(overdraft,accountType,balance,accountNumber);
         }
 
 
     }
     public static class CommunityAccount extends Account{
         //Constructor with arguments
-        public CommunityAccount(int overdraft,String accountType,int balance){
-            super(overdraft,accountType,balance);
+        public CommunityAccount(int overdraft,String accountType,int balance,int accountNumber){
+            super(overdraft,accountType,balance,accountNumber);
         }
 
 
