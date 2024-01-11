@@ -16,7 +16,7 @@ public class ViewMyAccounts extends JFrame {
 
     public ViewMyAccounts(){
         setContentPane(mainPanel);
-        setTitle("All Accounts I own");
+        setTitle("View all the Accounts I own");
         setSize(700, 300);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
        // setVisible(true);

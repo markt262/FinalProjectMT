@@ -1,5 +1,7 @@
 package org.example;
 
+import javax.swing.*;
+
 public class Account {
     //attributes
     private int overdraft;
@@ -17,6 +19,11 @@ public class Account {
 
     }
     //methods
+    public void deposit(int x,int accountNumber ){
+        System.out.println(x);
+        database deposit = new database();
+        deposit.deposit(x,accountNumber);
+    }
     public  int getOverdraft(){
         return overdraft;
     }

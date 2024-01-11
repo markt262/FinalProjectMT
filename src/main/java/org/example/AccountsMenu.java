@@ -29,8 +29,8 @@ public class AccountsMenu extends JFrame {
 
     public AccountsMenu(){
         setContentPane(mainPanel);
-        setTitle("Welcome to Scen-Nario Banking system.");
-        setSize(500,500);
+        setTitle("Deposit, Withdraw, Transfer menu.");
+        setSize(1000,500);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         //setVisible(true);
 
@@ -43,6 +43,13 @@ public class AccountsMenu extends JFrame {
         buttonDeposit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Account.BusinessAccount bAcc= new Account.BusinessAccount(Integer.parseInt(accNum));
+                String deposit= textFieldDeposit.getText();
+                bAcc.deposit(Integer.parseInt(deposit),Integer.parseInt(accNum));
+
+                database myDatabase = new database();
+                String balance=jLAccountNumberWelcome.getText();
+                myDatabase.balance(Integer.parseInt(balance));
 
             }
         });

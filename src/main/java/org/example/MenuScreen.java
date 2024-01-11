@@ -32,7 +32,7 @@ public class MenuScreen extends JFrame {
 
 
         setContentPane(panel3);
-        setTitle("Welcome to Scen-Nario Banking system.");
+        setTitle("Create, View or Join existing accounts.");
         setSize(400, 300);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);

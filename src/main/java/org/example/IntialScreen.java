@@ -14,7 +14,7 @@ public class IntialScreen  extends JFrame{
 
     public IntialScreen(){
         setContentPane(panel1);
-        setTitle("Welcome to Scen-Nario Banking system.");
+        setTitle("Register or login screen.");
         setSize(400,300);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);

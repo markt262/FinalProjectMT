@@ -344,7 +344,6 @@ private int t;
             ResultSet resultSet = statement.executeQuery(query8);
             while (resultSet.next()) {
                 String resultstring = resultSet.getString("balance");
-                //System.out.println(resultstring);
                 AccountsMenu.balance(resultstring);
                 AccountsMenu accountMenu = new AccountsMenu();
             }
@@ -355,6 +354,32 @@ private int t;
             throw new RuntimeException(e);
         }
     }
+
+    public void deposit(int d,int a ) {
+        System.out.println(d+a);
+
+        try {
+            // Connect to the database
+            String url = "jdbc:mysql://localhost:3306/projectdatabase";
+            String user = "root";
+            String password = "LT0k41JCeam5";
+            Connection conn = DriverManager.getConnection(url, user, password);
+
+
+            String insertBalance = "UPDATE account SET balance="+d+" WHERE accountNumber = "+a;
+            // create a statement object
+            Statement statement= conn.createStatement();
+            statement.executeUpdate(insertBalance);
+
+
+
+
+
+    } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } ;
+
+}
 
 
 }//end class
