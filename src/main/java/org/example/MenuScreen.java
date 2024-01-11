@@ -41,16 +41,16 @@ public class MenuScreen extends JFrame {
         btCreateBusiness.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Account userAccount = new Account(1000);
-                //userAccount.create(1000)
-                Account.BusinessAccount BUser = new Account.BusinessAccount( 1000,"Business", 0,0);
-                System.out.println(BUser.getOverdraft());
+
+
+
 
                 // create a new business account in database
                 database BankDatabase = new database();
 
                 BankDatabase.addAccount(0, "business");
-                //BankDatabase.accountNumber();
+                Account.BusinessAccount BUser = new Account.BusinessAccount(Integer.parseInt(y));
+                System.out.println(BUser.getOverdraft());
 
 
                 //link the user number and account number to the user account table.
@@ -62,17 +62,12 @@ public class MenuScreen extends JFrame {
         btCreateClient.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Account userAccount = new Account(1000);
-                //userAccount.create(1000)
-                Account.ClientAccount CUser = new Account.ClientAccount(1500, "Client", 0,0);
-                System.out.println(CUser.getOverdraft());
 
                 // create a new business account in database
                 database BankDatabase = new database();
 
                 BankDatabase.addAccount(0, "client");
-                //BankDatabase.accountNumber();
-
+                Account.ClientAccount CUser = new Account.ClientAccount(Integer.parseInt(y));
 
                 //link the user number and account number to the user account table.
                 BankDatabase.addUserAccount(x, y);
@@ -83,17 +78,11 @@ public class MenuScreen extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                // Account userAccount = new Account(1000);
-                //userAccount.create(1000)
-                Account.CommunityAccount ComUser = new Account.CommunityAccount(2500, "community", 0,0);
-                System.out.println(ComUser.getOverdraft());
-
                 // create a new business account in database
                 database BankDatabase = new database();
 
                 BankDatabase.addAccount(0, "community");
-                //BankDatabase.accountNumber();
-
+                Account.CommunityAccount ComUser = new Account.CommunityAccount(Integer.parseInt(y));
 
                 //link the user number and account number to the user account table.
                 BankDatabase.addUserAccount(x, y);
