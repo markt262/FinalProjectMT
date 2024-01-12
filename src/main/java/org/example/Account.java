@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class Account {
     //attributes
-    private int overdraft;
+    private static int overdraft;
     private String accountType;
     private int balance;
 
@@ -27,8 +27,7 @@ public class Account {
     }
 
     public void withdraw(int x, int accountNumber, int balance) {
-        database withdraw = new database();
-        withdraw.deposit((balance - x), accountNumber);
+
     }
 
     public int getOverdraft() {
@@ -41,14 +40,19 @@ public class Account {
         //Constructor with arguments
 
         public BusinessAccount(int accountNumber) {
-            super(1500, "business", 0, accountNumber);
+            super(-1000, "business", 0, accountNumber);
 
         }
         @Override
         public void withdraw(int x, int accountNumber, int balance) {
-            //database withdraw = new database();
-            //withdraw.deposit((balance - x), accountNumber);
-            System.out.println("bye bye");
+            if ((balance - x) < overdraft) {
+                System.out.println("cant withdraw this amount as you go over your Client account overdraft ");
+
+            } else {
+                database withdraw = new database();
+                withdraw.deposit((balance - x), accountNumber);
+
+            }
         }
 
     }
@@ -58,7 +62,17 @@ public class Account {
 
         //Constructor with arguments
         public ClientAccount(int accountNumber) {
-            super(1500, "client", 0, accountNumber);
+            super(-1500, "client", 0, accountNumber);
+        }
+        @Override
+        public void withdraw(int x, int accountNumber, int balance) {
+            if ((balance - x) < overdraft) {
+                System.out.println("cant withdraw this amount as you go over your Client account overdraft ");
+            } else {
+
+                database withdraw = new database();
+                withdraw.deposit((balance - x), accountNumber);
+            }
         }
 
 
@@ -67,7 +81,17 @@ public class Account {
     public static class CommunityAccount extends Account {
         //Constructor with arguments
         public CommunityAccount(int accountNumber) {
-            super(2500, "community", 0, accountNumber);
+            super(-2500, "community", 0, accountNumber);
+        }
+        @Override
+        public void withdraw(int x, int accountNumber, int balance) {
+            if ((balance - x) < overdraft) {
+                System.out.println("cant withdraw this amount as you go over your Community account overdraft ");
+            } else {
+
+                database withdraw = new database();
+                withdraw.deposit((balance - x), accountNumber);
+            }
         }
 
 
