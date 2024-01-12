@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static org.example.MenuScreen.intUserNumber;
+
 public class AccountsMenu extends JFrame {
 
 
@@ -26,6 +28,11 @@ public class AccountsMenu extends JFrame {
     private JButton buttonTransfer;
     private JLabel jlAccountType;
     private JLabel lbBalance;
+    private JButton jBAllAccounts;
+
+    private String balance;
+
+
 
     public AccountsMenu(){
         setContentPane(mainPanel);
@@ -40,22 +47,74 @@ public class AccountsMenu extends JFrame {
         setVisible(true);
 
 
+
         buttonDeposit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Account.BusinessAccount bAcc= new Account.BusinessAccount(Integer.parseInt(accNum));
-                String deposit= textFieldDeposit.getText();
-                bAcc.deposit(Integer.parseInt(deposit),Integer.parseInt(accNum));
 
-                database myDatabase = new database();
-                String balance=jLAccountNumberWelcome.getText();
-                myDatabase.balance(Integer.parseInt(balance));
+
+                if (acctype.equals("business")) {
+                    Account.BusinessAccount bAcc= new Account.BusinessAccount(Integer.parseInt(accNum));
+                    database myDatabase = new database();
+                    String balance=lbBalance.getText();
+                    myDatabase.balance(Integer.parseInt(balance));
+                    String deposit= textFieldDeposit.getText();
+                    bAcc.deposit(Integer.parseInt(deposit),Integer.parseInt(accNum),Integer.parseInt(balance));
+                    } else if (acctype.equals("client")) {
+                    Account.ClientAccount bAcc= new Account.ClientAccount(Integer.parseInt(accNum));
+                    database myDatabase = new database();
+                    String balance=lbBalance.getText();
+                    myDatabase.balance(Integer.parseInt(balance));
+                    String deposit= textFieldDeposit.getText();
+                    bAcc.deposit(Integer.parseInt(deposit),Integer.parseInt(accNum),Integer.parseInt(balance));
+                    } else if (acctype.equals("community")){
+                    Account.CommunityAccount bAcc= new Account.CommunityAccount(Integer.parseInt(accNum));
+                    database myDatabase = new database();
+                    String balance=lbBalance.getText();
+                    myDatabase.balance(Integer.parseInt(balance));
+                    String deposit= textFieldDeposit.getText();
+                    bAcc.deposit(Integer.parseInt(deposit),Integer.parseInt(accNum),Integer.parseInt(balance));
+                    }
+
+
+                    database myDatabase = new database();
+                    balance = jLAccountNumberWelcome.getText();
+                    myDatabase.balance(Integer.parseInt(balance));
 
             }
         });
         buttonWithdraw.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (acctype.equals("business")){
+                    Account.BusinessAccount bAcc= new Account.BusinessAccount(Integer.parseInt(accNum));
+                    database myDatabase = new database();
+                    String balance=lbBalance.getText();
+                    myDatabase.balance(Integer.parseInt(balance));
+                    String withdraw= textFieldWithdraw.getText();
+                    bAcc.withdraw(Integer.parseInt(withdraw),Integer.parseInt(accNum),Integer.parseInt(balance));
+                } else if (acctype.equals("client")){
+                    Account.ClientAccount bAcc= new Account.ClientAccount(Integer.parseInt(accNum));
+                    database myDatabase = new database();
+                    String balance=lbBalance.getText();
+                    myDatabase.balance(Integer.parseInt(balance));
+                    String withdraw= textFieldWithdraw.getText();
+                    bAcc.withdraw(Integer.parseInt(withdraw),Integer.parseInt(accNum),Integer.parseInt(balance));
+                }else if (acctype.equals("community")){
+                    Account.CommunityAccount bAcc= new Account.CommunityAccount(Integer.parseInt(accNum));
+                    database myDatabase = new database();
+                    String balance=lbBalance.getText();
+                    myDatabase.balance(Integer.parseInt(balance));
+                    String withdraw= textFieldWithdraw.getText();
+                    bAcc.withdraw(Integer.parseInt(withdraw),Integer.parseInt(accNum),Integer.parseInt(balance));}
+
+                    database databaseBalance = new database();
+                    String balance1=jLAccountNumberWelcome.getText();
+                    databaseBalance.balance(Integer.parseInt(balance1));
+
+
+
+
 
             }
         });
@@ -63,6 +122,15 @@ public class AccountsMenu extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+            }
+        });
+        jBAllAccounts.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mainPanel.remove(mainPanel);
+                ViewMyAccounts viewMyAccountsScreen = new ViewMyAccounts();
+                database BankDatabase = new database();
+                BankDatabase.viewAllAccounts(intUserNumber);
             }
         });
     }

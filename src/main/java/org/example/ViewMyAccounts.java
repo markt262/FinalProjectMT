@@ -19,7 +19,7 @@ public class ViewMyAccounts extends JFrame {
         setTitle("View all the Accounts I own");
         setSize(700, 300);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-       // setVisible(true);
+       setVisible(true);
 
 
         btSelectAccount.addActionListener(new ActionListener() {
