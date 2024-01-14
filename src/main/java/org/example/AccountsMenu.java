@@ -37,7 +37,7 @@ public class AccountsMenu extends JFrame {
     public AccountsMenu(){
         setContentPane(mainPanel);
         setTitle("Deposit, Withdraw, Transfer menu.");
-        setSize(1000,500);
+        setSize(800,500);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         //setVisible(true);
 

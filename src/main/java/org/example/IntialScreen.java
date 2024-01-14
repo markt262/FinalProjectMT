@@ -15,7 +15,7 @@ public class IntialScreen  extends JFrame{
     public IntialScreen(){
         setContentPane(panel1);
         setTitle("Register or login screen.");
-        setSize(400,300);
+        setSize(800,500);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
 

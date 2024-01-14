@@ -11,7 +11,7 @@
       <component id="f98fc" class="javax.swing.JLabel" binding="lbWithdraw">
         <constraints>
           <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
-            <preferred-size width="371" height="17"/>
+            <preferred-size width="50" height="17"/>
           </grid>
         </constraints>
         <properties>
@@ -79,7 +79,7 @@
       <component id="27fbf" class="javax.swing.JLabel" binding="lbTransfer">
         <constraints>
           <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
-            <preferred-size width="371" height="17"/>
+            <preferred-size width="206" height="17"/>
           </grid>
         </constraints>
         <properties>
@@ -99,7 +99,7 @@
       <component id="484df" class="javax.swing.JLabel">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
-            <preferred-size width="371" height="17"/>
+            <preferred-size width="206" height="17"/>
           </grid>
         </constraints>
         <properties>
@@ -109,7 +109,7 @@
       <component id="625d3" class="javax.swing.JLabel">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
-            <preferred-size width="371" height="17"/>
+            <preferred-size width="206" height="17"/>
           </grid>
         </constraints>
         <properties>
@@ -128,7 +128,9 @@
       </component>
       <component id="bc7f2" class="javax.swing.JLabel">
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="206" height="17"/>
+          </grid>
         </constraints>
         <properties>
           <text value="Balance of account"/>
@@ -145,7 +147,7 @@
       <component id="5e64e" class="javax.swing.JLabel" binding="lbDeposit">
         <constraints>
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
-            <preferred-size width="371" height="17"/>
+            <preferred-size width="50" height="17"/>
           </grid>
         </constraints>
         <properties>

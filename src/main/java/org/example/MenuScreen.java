@@ -33,7 +33,7 @@ public class MenuScreen extends JFrame {
 
         setContentPane(panel3);
         setTitle("Create, View or Join existing accounts.");
-        setSize(400, 300);
+        setSize(800, 500);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
 

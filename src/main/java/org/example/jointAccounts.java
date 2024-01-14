@@ -17,7 +17,7 @@ public class jointAccounts extends JFrame {
     public jointAccounts(){
         setContentPane(mainPanel);
         setTitle("Select A Busineess or Community Account To Join....");
-        setSize(700, 300);
+        setSize(800, 500);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
 

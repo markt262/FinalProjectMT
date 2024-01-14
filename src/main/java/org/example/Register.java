@@ -26,7 +26,7 @@ public class Register extends JFrame {
     public Register() {
         setContentPane(panel2);
         setTitle("Register Accounts here");
-        setSize(600, 800);
+        setSize(800, 500);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
 
