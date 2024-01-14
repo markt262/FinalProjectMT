@@ -186,8 +186,6 @@ public class database {
             // execute the preparedstatement
             preparedStmt.execute();
 
-            // Close the connection version7
-            //conn.close();
         } catch (Exception f) {
             System.err.println("Got an exception!");
             System.err.println(f.getMessage());
@@ -413,8 +411,8 @@ private int t;
                 }
 
                 //ViewMyAccounts allAccount = new ViewMyAccounts();
-                whichBusinessAccount allBusiness = new whichBusinessAccount();
-                allBusiness.returnAllBusinessAccounts(myModel);
+                jointAccounts allBusiness = new jointAccounts();
+                allBusiness.returnAllBusinessAccounts(myModel,intUserNumber);
 
 
                 conn.close();
@@ -427,6 +425,56 @@ private int t;
         }
     }
 
+    public void returnAllCommunityAccounts(int intUserNumber) {
+
+        try {
+            // Connect to the database
+            String url = "jdbc:mysql://localhost:3306/projectdatabase";
+            String user = "root";
+            String password = "LT0k41JCeam5";
+            Connection conn = DriverManager.getConnection(url, user, password);
+
+            JComboBox<String> comboBox1 = new JComboBox<>();
+            try {
+                // String url = "jdbc:mysql://localhost:3306/projectdatabase";
+                // String user = "root";
+                // String password = "LT0k41JCeam5";
+                //  Connection conn = DriverManager.getConnection(url, user, password);
+                DefaultComboBoxModel myModel = new DefaultComboBoxModel();
+                PreparedStatement statement1 = conn.prepareStatement("SELECT account.`accountnumber`\n" +
+                        "FROM `user`\n" +
+                        "INNER JOIN (account\n" +
+                        "INNER JOIN useraccount ON account.`accountnumber` = useraccount.`accountnumber`)\n" +
+                        "ON `user`.`usernumber` = useraccount.`usernumber`\n" +
+                        "WHERE (((`user`.`usernumber`)<>" + intUserNumber + " ) AND (((`account`.`accountType`)= 'community')));\n");
+                ResultSet resultSet1 = statement1.executeQuery();
+                while (resultSet1.next()) {
+                    String column = resultSet1.getString("accountNumber");
+                    myModel.addElement(column);
+
+
+                }
+
+                //ViewMyAccounts allAccount = new ViewMyAccounts();
+                jointAccounts allBusiness = new jointAccounts();
+                allBusiness.returnAllBusinessAccounts(myModel,intUserNumber);
+
+
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /*public void AddToJointAccount(Object selectedItem, int userNumber1){
+
+        System.out.println(selectedItem);
+        System.out.println(userNumber1);
+    }*/
 
 
 }//end class

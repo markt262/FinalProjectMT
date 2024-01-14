@@ -111,6 +111,14 @@ public class MenuScreen extends JFrame {
 
             }
         });
+        btjoinCommunity.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                database community =new database();
+                community.returnAllCommunityAccounts(intUserNumber);
+
+            }
+        });
     }
 
     public void welcome(String result) {
