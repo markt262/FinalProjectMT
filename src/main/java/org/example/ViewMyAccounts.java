@@ -48,7 +48,8 @@ public class ViewMyAccounts extends JFrame {
         public void returnAccountNumber( DefaultComboBoxModel myModel) {
 
             comboBox5.setModel(myModel);
-            myModel.addElement("nesarly thetre"); // if i can get a list into here
+
+
 
         }
 

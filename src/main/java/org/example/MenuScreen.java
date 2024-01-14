@@ -101,6 +101,16 @@ public class MenuScreen extends JFrame {
 
             }
         });
+        btjoinBusiness.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                database business =new database();
+                business.returnAllBusinessAccounts(intUserNumber);
+
+
+            }
+        });
     }
 
     public void welcome(String result) {

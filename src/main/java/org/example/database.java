@@ -5,6 +5,8 @@ import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 
 
+
+
 public class database {
 
 
@@ -380,6 +382,50 @@ private int t;
         } ;
 
 }
+   public void returnAllBusinessAccounts(int intUserNumber) {
+
+        try {
+            // Connect to the database
+            String url = "jdbc:mysql://localhost:3306/projectdatabase";
+            String user = "root";
+            String password = "LT0k41JCeam5";
+            Connection conn = DriverManager.getConnection(url, user, password);
+
+            JComboBox<String> comboBox1 = new JComboBox<>();
+            try {
+                // String url = "jdbc:mysql://localhost:3306/projectdatabase";
+                // String user = "root";
+                // String password = "LT0k41JCeam5";
+                //  Connection conn = DriverManager.getConnection(url, user, password);
+                DefaultComboBoxModel myModel = new DefaultComboBoxModel();
+                PreparedStatement statement1 = conn.prepareStatement("SELECT account.`accountnumber`\n" +
+                        "FROM `user`\n" +
+                        "INNER JOIN (account\n" +
+                        "INNER JOIN useraccount ON account.`accountnumber` = useraccount.`accountnumber`)\n" +
+                        "ON `user`.`usernumber` = useraccount.`usernumber`\n" +
+                        "WHERE (((`user`.`usernumber`)<>" + intUserNumber + " ) AND (((`account`.`accountType`)= 'business')));\n");
+                ResultSet resultSet1 = statement1.executeQuery();
+                while (resultSet1.next()) {
+                    String column = resultSet1.getString("accountNumber");
+                    myModel.addElement(column);
+
+
+                }
+
+                //ViewMyAccounts allAccount = new ViewMyAccounts();
+                whichBusinessAccount allBusiness = new whichBusinessAccount();
+                allBusiness.returnAllBusinessAccounts(myModel);
+
+
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
 
