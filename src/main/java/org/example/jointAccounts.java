@@ -11,6 +11,7 @@ public class jointAccounts extends JFrame {
     private JComboBox comboBox12;
     private JTextPane pleaseSelectTheAccountTextPane;
     private JButton ENTERButton;
+    private JButton RETURNTOYOURMENUButton;
 
     private String userNumber1;
 
@@ -28,6 +29,14 @@ public class jointAccounts extends JFrame {
                 database myDatabase = new database();
 
                 myDatabase.addUserAccount( userNumber1,(String) comboBox12.getSelectedItem());
+            }
+        });
+        RETURNTOYOURMENUButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("remove screen");
+                mainPanel.remove(mainPanel);
+                MenuScreen menuscreen= new MenuScreen();
             }
         });
     }

@@ -1,7 +1,4 @@
 package org.example;
-
-import javax.swing.*;
-
 public class Account {
     //attributes
     private static int overdraft;
